@@ -6,11 +6,73 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="shadow-sm">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+      <div class="container">
+       <a class="navbar-brand" href="/">Bikewith</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+          <% if admin_signed_in? %>
+            <li class="nav-item">
+             <%= link_to "バイク一覧", admin_items_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "Myバイク投稿一覧", admin_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+            </li>
+          <% elsif customer_signed_in? %>
+            <li class="nav-item">
+             <%= link_to "マイページ", customers_information_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "Myバイク投稿一覧", bike_reviews_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "通知", notices_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+             <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "サイト説明", about_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "Myバイク投稿一覧", bike_reviews_path, class: 'nav-link text-light' %>
+            </li>
+          <% end %>
+
+        </ul>
+       </div>
+
+       </div>
+      </div>
+     </nav>
+   </header>
     <%= yield %>
   </body>
 </html>
