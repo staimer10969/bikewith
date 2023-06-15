@@ -34,10 +34,15 @@
 
     <div class="field-group new_item">
       <%= f.label :価格, class: "col-lg-2" %>
-      <%= f.text_field :price, size:"30*5"%>
+      <%= f.text_field :price, size:"30*5" %>
       <%= f.label :円 %>
     </div>
     <br>
+
+    <div class="field-group new_item">
+			<%= f.label :ジャンル, class: "col-lg-2" %></td>
+			<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, prompt: "選択してください" %>
+    </div>
 
     <div class="text-center mt-5 ml-2">
       <%= f.submit "新規登録", class: "btn btn-success" %>

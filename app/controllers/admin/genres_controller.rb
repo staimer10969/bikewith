@@ -9,32 +9,23 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params)
-    if @genre.save
-      redirect_to admin_genres_path
-    else
-      @genres = Genre.all
-      render :index
-    end
+    @genre.save
+    redirect_to admin_genres_path
   end
 
   def edit
   end
 
   def update
-    if @genre.update(genre_params)
-      unless @genre.is_active
-        @genre.items.update_all(is_active: false)
-      end
-      redirect_to admin_genres_path
-    else
-      render :edit
-    end
+    @genre = Genre.find(params[:id])
+    @genre.update(genre_params)
+    redirect_to admin_genres_path
   end
 
   private
 
   def genre_params
-    params.require(:genre).permit(:genre_name, :is_active)
+    params.require(:genre).permit(:genre_name)
   end
 
   def ensure_genre
