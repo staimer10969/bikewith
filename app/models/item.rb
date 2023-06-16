@@ -18,7 +18,7 @@ class Item < ApplicationRecord
     image.variant(resize_to_limit: [250, 250]).processed
   end
 
-  scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
+  #scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
 
   def with_tax_price
     (price * 108 / 100.0).ceil

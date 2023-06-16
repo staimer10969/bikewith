@@ -1,0 +1,38 @@
+<h1>会員情報編集</h1>
+
+<table class="table customer-table">
+  <thead class="table-active">
+    <tr>
+      <th>会員ID</th>
+      <th>ニックネーム</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+     <tr>
+      <th>
+        <%= customer.id %>
+      </th>
+      <td>
+        <%= link_to customer.name, admin_customer_path(customer.id) %>
+      </th>
+      <th>
+        <%= customer.email %>
+      </th>
+      <th>
+        <% if customer.is_deleted %>
+          退会
+        <% elsif %>
+          有効
+        <% else %>
+          停止
+        <% end %>
+      </th>
+      </tr>
+    <% end %>
+        <%= paginate @customers %>
+  </tbody>
+</table>

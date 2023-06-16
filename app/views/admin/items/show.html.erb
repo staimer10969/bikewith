@@ -32,6 +32,10 @@
 
   <tr>
     <th width="30%">ジャンル</th>
-    <td><%= @genre.genre_name %></td>
+    <td><%= @item.genre_id %></td>
   </tr>
 </table>
+
+<div class="text-center mt-5">
+  <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success" %>
+</div>
