@@ -1,19 +1,25 @@
-<h2><%= @customer.name %>さんの会員情報編集</h2>
-  <%= form_with(model: @customer, url:admin_customer_path, local: true, method: :patch) do |f| %>
-  <table class="customer-edit col-xl-8">
-   <tr>
-    <th><%= f.label :"会員ID" %></th>
-    <td><%= f.label :"#{@customer.id}" %></td>
-   </tr>
+<h1>マイページ編集</h1>
 
+  <%= form_with(model: @customer, url:customers_information_path, local: true, method: :patch) do |f| %>
+  <table class="customer-edit col-xl-8">
    <tr>
     <th><%= f.label :"ニックネーム" %></th>
     <td><%= f.text_field :name %></td>
    </tr>
 
    <tr>
-    <th><%= f.label :"メールアドレス" %></th>
-    <td><%= f.text_field :email %></td>
+    <th><%= f.label :"ライダースキル" %></th>
+    <td><%= f.text_field :skill %></td>
+   </tr>
+   
+   <tr>
+    <th><%= f.label :"乗車頻度" %></th>
+    <td><%= f.text_field :frequency %></td>
+   </tr>
+   
+   <tr>
+    <th><%= f.label :"自己紹介" %></th>
+    <td><%= f.text_field :introduction %></td>
    </tr>
 
    <tr>

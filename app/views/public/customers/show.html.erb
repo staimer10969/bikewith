@@ -1,1 +1,32 @@
 <h1>マイページ</h1>
+
+<div class="item-image">
+  <%= image_tag @customer.get_image, size: "400x300" %>
+</div>
+
+<table class="admin-item-table", width="100%">
+  <tr>
+    <th width="20%">ニックネーム</th>
+    <td><%= @customer.name %></td>
+  </tr>
+
+  <tr>
+    <th width="20%">ライダースキル</th>
+    <td><%= @customer.skill %></td>
+  </tr>
+
+  <tr>
+    <th width="20%">乗車頻度</th>
+    <td><%= @customer.frequency %></td>
+  </tr>
+
+  <tr>
+    <th width="20%">自己紹介</th>
+    <td><%= @customer.introduction %></td>
+  </tr>
+</table>
+
+
+<div class="text-center mt-5">
+  <%= link_to "編集する", customers_information_edit_path(@customer.id), class:"btn btn-success" %>
+</div>

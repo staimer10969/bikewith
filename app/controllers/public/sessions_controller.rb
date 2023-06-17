@@ -20,7 +20,7 @@ class Public::SessionsController < Devise::SessionsController
   protected
 
   def configure_permitted_parameters
-   devise_parameter_sanitizer.permit :sign_in, keys: [:login, :email, :encrypted_password] #:remember_me
+     devise_parameter_sanitizer.permit :sign_in, keys: [:login, :email, :encrypted_password] #:remember_me
   end
 
   def customer_state
