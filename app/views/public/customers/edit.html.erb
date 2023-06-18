@@ -9,32 +9,43 @@
 
    <tr>
     <th><%= f.label :"ライダースキル" %></th>
-    <td><%= f.text_field :skill %></td>
+    <td>
+　   <%= f.radio_button :skill, "beginner" %>
+     <%= f.label :skill_beginner, "初級" %>
+     <%= f.radio_button :skill, "intermediate" %>
+     <%= f.label :skill_intermediate, "中級" %>
+     <%= f.radio_button :skill, "advanced" %>
+     <%= f.label :skill_advanced, "上級" %>
+     <%= f.radio_button :skill, "professional" %>
+     <%= f.label :skill_professional, "プロ級" %>
+    </td>
    </tr>
-   
+
    <tr>
     <th><%= f.label :"乗車頻度" %></th>
-    <td><%= f.text_field :frequency %></td>
+    <td>
+     <%= f.radio_button :frequency, "several_times" %>
+     <%= f.label :frequency_several_times, "年に数回" %>
+     <%= f.radio_button :frequency, "more_than_once" %>
+     <%= f.label :frequency_more_than_once, "月に複数回" %>
+     <%= f.radio_button :frequency, "every_day" %>
+     <%= f.label :frequency_every_day, "ほぼ毎日" %>
+    </td>
    </tr>
-   
+
    <tr>
     <th><%= f.label :"自己紹介" %></th>
     <td><%= f.text_field :introduction %></td>
    </tr>
 
    <tr>
-    <th><%= f.label :"会員ステータス" %>
-     <td>
-      <%= f.radio_button :is_deleted, false %>
-      <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-      <%= f.radio_button :is_deleted, true %>
-      <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
-     </td>
+    <th><%= f.label :"カバー画像" %></th>
+    <td><%= f.file_field:image, accept:"image/*" %></td>
    </tr>
   </table>
   <br>
   <br>
   <div class="btn-class text-center">
-   <%= f.submit '変更を保存', class: "btn btn-success w-25" %>
+   <%= f.submit '変更を保存', class: "btn btn-success" %>
   </div>
   <% end %>

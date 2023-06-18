@@ -1,0 +1,13 @@
+ja:
+  enums:
+    customer:
+      skill:
+        beginner: "初級"
+        intermediate: "中級"
+        advanced: "上級"
+        professional: "プロ級"
+
+      frequency:
+        several_times: "年に数回"
+        more_than_once: "月に複数回"
+        every_day: "ほぼ毎日"

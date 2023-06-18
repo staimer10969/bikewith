@@ -8,6 +8,9 @@ class Customer < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :image
 
+  enum skill:{beginner:0, intermediate:1, advanced:2, professional:3}
+  enum frequency:{several_times:0, more_than_once:1, every_day:2}
+
   validates :name, presence: true
 
   def get_image
