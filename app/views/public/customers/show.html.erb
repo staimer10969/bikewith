@@ -12,12 +12,12 @@
 
   <tr>
     <th width="20%">ライダースキル</th>
-    <td><%= @customer.skill %></td>
+    <td><%= @customer.skill_i18n %></td>
   </tr>
 
   <tr>
     <th width="20%">乗車頻度</th>
-    <td><%= @customer.frequency %></td>
+    <td><%= @customer.frequency_i18n %></td>
   </tr>
 
   <tr>
@@ -25,8 +25,12 @@
     <td><%= @customer.introduction %></td>
   </tr>
 </table>
+<br>
 
-
-<div class="text-center mt-5">
+<div>
   <%= link_to "編集する", customers_information_edit_path(@customer.id), class:"btn btn-success" %>
+</div>
+<br>
+<div>
+  <%= link_to "＋Myバイク投稿", new_mybike_review_path, class:"btn btn-success" %>
 </div>
