@@ -113,7 +113,10 @@ ActiveRecord::Schema.define(version: 2023_06_16_090400) do
   create_table "reviews", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
-    t.string "comment"
+    t.string "motive"
+    t.string "merit"
+    t.string "demerit"
+    t.string "advice"
     t.integer "score"
     t.string "address"
     t.float "latitude"

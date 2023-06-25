@@ -1,4 +1,4 @@
-<h1>Myバイク投稿詳細</h1>
+<h1>Myバイク詳細</h1>
 
 <div class="item-image">
   <%= image_tag @item.get_image, size: "400x300" %>
@@ -52,11 +52,3 @@
     <td><%= @review.advice %></td>
   </tr>
 </table>
-
-<div class="text-left mt-5">
-  <%= link_to "編集", edit_mybike_review_path(@review.id), class:"btn btn-success" %>
-</div>
-
-<div class="text-left mt-5">
-  <%= link_to "削除", mybike_review_path(@review), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %>
-</div>

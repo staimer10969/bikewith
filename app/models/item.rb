@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :genre
   has_many :mybike_reviews, dependent: :destroy
-  has_many :bike_reviews
+  has_many :bike_reviews, dependent: :destroy
   has_one_attached :image
 
   validates :brand, presence: true

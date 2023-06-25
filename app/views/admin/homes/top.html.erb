@@ -1,1 +1,22 @@
-<h1>admin topページ</h1>
+<h1>Myバイク投稿履歴一覧</h1>
+
+<table class="table review-table">
+  <% @reviews.each do |review| %>
+    <tr>
+      <td>
+        <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'40x30' %>
+      </td>
+      <td>
+        <%= review.item.model %><br>
+        <%= review.customer.name %><br>
+        <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
+      </td>
+      <td>
+        <%= link_to admin_review_path(review.id) do %>
+          <button class="btn btn-primary ml-5">詳細</button>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @reviews %>
