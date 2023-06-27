@@ -1,40 +1,49 @@
-<h1>マイページ</h1>
+<body>
+  <main>
+    <div class="container mt-5">
+      <div class="mypage-title">
+        <h3>マイページ</h3>
+      </div>
 
-<div class="item-image">
-  <%= image_tag @customer.get_image, size: "400x300" %>
-</div>
+        <div class="row">
+          <div class="col-md-6 mt-3">
+            <h5 class="mt-3 ml-3">プロフィール</h5>
+              <table class="table mt-5 ml-2">
+                <tbody class="mt-1">
+                  <tr>
+                    <th class="col-lg-4">ニックネーム</th>
+                    <td>&ensp;<%= @customer.name %></td>
+                  </tr>
 
-<table class="admin-item-table", width="100%">
-  <tr>
-    <th width="20%">ニックネーム</th>
-    <td><%= @customer.name %></td>
-  </tr>
+                  <tr>
+                    <th class="col-lg-4">ライダースキル</th>
+                    <td>&ensp;<%= @customer.skill_i18n %></td>
+                  </tr>
 
-  <tr>
-    <th width="20%">ライダースキル</th>
-    <td><%= @customer.skill_i18n %></td>
-  </tr>
+                  <tr>
+                    <th class="col-lg-4">乗車頻度</th>
+                    <td>&ensp;<%= @customer.frequency_i18n %></td>
+                  </tr>
 
-  <tr>
-    <th width="20%">乗車頻度</th>
-    <td><%= @customer.frequency_i18n %></td>
-  </tr>
+                  <tr>
+                    <th class="col-lg-4">自己紹介</th>
+                    <td>&ensp;<%= @customer.introduction %></td>
+                  </tr>
+                </tbody>
+              </table>
 
-  <tr>
-    <th width="20%">自己紹介</th>
-    <td><%= @customer.introduction %></td>
-  </tr>
-</table>
-<br>
+              <div class="btn mt-4 ml-2">
+                <%= link_to "プロフィール編集", customers_information_edit_path(@customer.id), class:"btn btn-success" %>&nbsp;
+                <%= link_to "＋Myバイク投稿", new_mybike_review_path, class:"btn btn-primary" %>&nbsp;
+                <%= link_to "Myバイク投稿履歴一覧", mybike_reviews_path, class:"btn btn-info" %>
+              </div>
+          </div>
 
-<div>
-  <%= link_to "編集する", customers_information_edit_path(@customer.id), class:"btn btn-success" %>
-</div>
-<br>
-<div>
-  <%= link_to "＋Myバイク投稿", new_mybike_review_path, class:"btn btn-success" %>
-</div>
-<br>
-<div>
-  <%= link_to "Myバイク投稿履歴一覧", mybike_reviews_path, class:"btn btn-success" %>
-</div>
+          <div class="col-md-6 text-center">
+            <%= image_tag @customer.get_image, size: "350x400" %>
+          </div>
+        </div>
+    </div>
+  </main>
+</body>
+
