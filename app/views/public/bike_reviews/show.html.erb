@@ -53,7 +53,7 @@
   </tr>
 </table>
 
-<% if @review.customer_id == current_customer.id %>
+<% if @review.customer_id == current_customer %>
   <div class="text-left mt-5">
     <%= link_to "編集", edit_mybike_review_path(@review.id), class:"btn btn-success" %>
   </div>
