@@ -1,37 +1,47 @@
-<h2><%= @customer.name %>さんの会員詳細</h2>
-<br>
- <table class="customer-show col-xl-5 ml-5">
-   <tr>
-    <th><strong>会員ID</strong></th>
-    <td><%= @customer.id %></td>
-   </tr>
+<body>
+ <main>
+  <div class="container mt-5">
+   <div class="title">
+    <h3><%= @customer.name %>さんの会員詳細</h3>
+   </div>
 
-    <tr>
-     <th><strong>氏名</strong></th>
-     <td><%= @customer.name %></td>
-     <tr>
+   <div class="row">
+    <div class="col-md-11 mt-5 ml-5">
+     <table class="table">
+       <tr>
+        <th><strong>会員ID</strong></th>
+        <td><%= @customer.id %></td>
+       </tr>
 
-    <tr>
-     <th><strong>メールアドレス</strong></th>
-     <td><%= @customer.email %></td>
-    </tr>
+        <tr>
+         <th><strong>氏名</strong></th>
+         <td><%= @customer.name %></td>
+         <tr>
 
-    <div>
-     <th><strong class="col-xs-2">会員ステータス</strong></th>
-      <td>
-       <% if @customer.is_deleted %>
-        <span class="bg-dranger">退会</span>
-       <% elsif %>
-        <span class="bg-primary">有効</span>
-       <% else %>
-        <span class="bg-dranger">停止</span>
-       <% end %>
-      </td>
+        <tr>
+         <th><strong>メールアドレス</strong></th>
+         <td><%= @customer.email %></td>
+        </tr>
+
+         <th><strong class="col-xs-2">会員ステータス</strong></th>
+          <td>
+           <% if @customer.is_deleted %>
+            <span class="bg-dranger">退会</span>
+           <% elsif %>
+            <span class="bg-primary">有効</span>
+           <% else %>
+            <span class="bg-dranger">停止</span>
+           <% end %>
+          </td>
+     </table>
+
+      <div class="text-center mt-5">
+       <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %>&emsp;&emsp;
+       <%= link_to "Myバイク投稿一覧を見る", admin_path, class: "btn btn-primary" %>&emsp;&emsp;
+       <%= link_to "コメント履歴一覧を見る", admin_comments_path, class: "btn btn-primary" %>
+      </div>
     </div>
- </table>
-
- <div class="text-center">
-  <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %>&emsp;&emsp;
-  <%= link_to "Myバイク投稿一覧を見る", admin_path, class: "btn btn-primary" %>&emsp;&emsp;
-  <%= link_to "コメント履歴一覧を見る", admin_comments_path, class: "btn btn-primary" %>
- </div>
+   </div>
+  </div>
+ </main>
+</body>

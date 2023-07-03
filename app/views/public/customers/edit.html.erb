@@ -1,52 +1,67 @@
-<h1>マイページ編集</h1>
+<body>
+  <main>
+    <div class="container mt-5">
+      <div class="title">
+        <h3>プロフィール編集</h3>
+      </div>
 
-  <%= form_with(model: @customer, url:customers_information_path, local: true, method: :patch) do |f| %>
-  <table class="customer-edit col-xl-8">
-   <tr>
-    <th><%= f.label :"ニックネーム" %></th>
-    <td><%= f.text_field :name %></td>
-   </tr>
+      <div class="row">
+        <div class="col-md-12 mt-5">
+           <%= form_with(model: @customer, url:customers_information_path, local: true, method: :patch) do |f| %>
 
-   <tr>
-    <th><%= f.label :"ライダースキル" %></th>
-    <td>
-　   <%= f.radio_button :skill, "beginner" %>
-     <%= f.label :skill_beginner, "初級" %>
-     <%= f.radio_button :skill, "intermediate" %>
-     <%= f.label :skill_intermediate, "中級" %>
-     <%= f.radio_button :skill, "advanced" %>
-     <%= f.label :skill_advanced, "上級" %>
-     <%= f.radio_button :skill, "professional" %>
-     <%= f.label :skill_professional, "プロ級" %>
-    </td>
-   </tr>
+           <table class="table table-borderless">
+              <tbody class="mt-1">
+                 <tr>
+                   <th class="col-lg-4"><%= f.label :"ニックネーム" %></th>
+                   <td><%= f.text_field :name, size:"30x5" %></td>
+                 </tr>
 
-   <tr>
-    <th><%= f.label :"乗車頻度" %></th>
-    <td>
-     <%= f.radio_button :frequency, "several_times" %>
-     <%= f.label :frequency_several_times, "年に数回" %>
-     <%= f.radio_button :frequency, "more_than_once" %>
-     <%= f.label :frequency_more_than_once, "月に複数回" %>
-     <%= f.radio_button :frequency, "every_day" %>
-     <%= f.label :frequency_every_day, "ほぼ毎日" %>
-    </td>
-   </tr>
+                 <tr>
+                   <th class="col-lg-3"><%= f.label :"ライダースキル" %></th>
+                   <td>
+                    　 <%= f.radio_button :skill, "beginner" %>
+                       <%= f.label :skill_beginner, "初級" %>
+                       <%= f.radio_button :skill, "intermediate" %>
+                       <%= f.label :skill_intermediate, "中級" %>
+                       <%= f.radio_button :skill, "advanced" %>
+                       <%= f.label :skill_advanced, "上級" %>
+                       <%= f.radio_button :skill, "professional" %>
+                       <%= f.label :skill_professional, "プロ級" %>
+                    </td>
+                 </tr>
 
-   <tr>
-    <th><%= f.label :"自己紹介" %></th>
-    <td><%= f.text_field :introduction %></td>
-   </tr>
+                 <tr>
+                   <th class="col-lg-4"><%= f.label :"乗車頻度" %></th>
+                     <td>
+                       <%= f.radio_button :frequency, "several_times" %>
+                       <%= f.label :frequency_several_times, "年に数回" %>
+                       <%= f.radio_button :frequency, "more_than_once" %>
+                       <%= f.label :frequency_more_than_once, "月に複数回" %>
+                       <%= f.radio_button :frequency, "every_day" %>
+                       <%= f.label :frequency_every_day, "ほぼ毎日" %>
+                     </td>
+                 </tr>
 
-   <tr>
-    <th><%= f.label :"カバー画像" %></th>
-    <td><%= f.file_field:image, accept:"image/*" %></td>
-   </tr>
-  </table>
-  <br>
-  <br>
-  <div class="btn-class text-center">
-   <%= f.submit '変更を保存', class: "btn btn-success" %>&emsp;
-   <%= link_to "退会する", customers_confirm_withdraw_path, class: "btn btn-danger" %>
-  </div>
-  <% end %>
+                <tr>
+                   <th class="col-lg-4"><%= f.label :"自己紹介" %></th>
+                   <td><%= f.text_area :introduction, size:"30x5" %></td>
+                </tr>
+
+                <tr>
+                   <th class="col-lg-4"><%= f.label :"カバー画像" %></th>
+                   <td><%= f.file_field:image, accept:"image/*" %></td>
+                </tr>
+             </tbody>
+          </table>
+        </div>
+
+             <div class="col-md-12 btn-class text-center mt-5">
+               <%= f.submit '変更を保存', class: "btn btn-success" %>&emsp;
+               <%= link_to "退会する", customers_confirm_withdraw_path, class: "btn btn-danger" %>
+             </div>
+             <% end %>
+
+      </div>
+     </div>
+  </main>
+</body>

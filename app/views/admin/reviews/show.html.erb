@@ -1,58 +1,77 @@
-<h1>Myバイク投稿履歴詳細</h1>
+<body>
+  <main>
+    <div class="container mt-5">
+      <div class="title">
+        <h3>Myバイク投稿履歴詳細</h3>
+      </div>
 
-<div class="item-image">
-  <%= image_tag @item.get_image, size: "400x300" %>
-</div>
+      <div class="row">
+        <div class="col-md-8 mt-5">
+          <%= image_tag @item.get_image, size: "600x500" %>
+        </div>
 
-<table class="item-table", width="100%">
-  <tr>
-    <th width="20%">車種</th>
-    <td><%= @item.model %></td>
-  </tr>
+        <div class="col-md-4 mt-5">
+          <h5 class="ml-2">スペック</h5>
+            <table class="table mt-3">
+              <tr>
+                <th width="40%">車種</th>
+                <td><%= @item.model %></td>
+              </tr>
 
-  <tr>
-    <th width="20%">メーカー</th>
-    <td><%= @item.brand %></td>
-  </tr>
+              <tr>
+                <th>メーカー</th>
+                <td><%= @item.brand %></td>
+              </tr>
 
-  <tr>
-    <th width="20%">年式</th>
-    <td><%= @item.model_year %></td>
-  </tr>
+              <tr>
+                <th>年式</th>
+                <td><%= @item.model_year %></td>
+              </tr>
 
-  <tr>
-    <th width="20%">排気量</th>
-    <td><%= @item.engine %></td>
-  </tr>
+              <tr>
+                <th>排気量</th>
+                <td><%= @item.engine %></td>
+              </tr>
 
-  <tr>
-    <th width="30%">価格</th>
-    <td><%= @item.price %></td>
-  </tr>
-</table>
+              <tr>
+                <th>価格</th>
+                <td><%= @item.price %></td>
+              </tr>
+            </table>
+        </div>
+      </div>
 
-<table class="review-table", width="100%">
-  <tr>
-    <th width="20%">購入動機</th>
-    <td><%= @review.motive %></td>
-  </tr>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="mt-5 ml-2">レビュー</h5>
+              <table class="table mt-3">
+                <tr>
+                  <th width="20%">購入動機</th>
+                  <td><%= @review.motive %></td>
+                </tr>
 
-  <tr>
-    <th width="20%">長所</th>
-    <td><%= @review.merit %></td>
-  </tr>
+                <tr>
+                  <th>長所</th>
+                  <td><%= @review.merit %></td>
+                </tr>
 
-  <tr>
-    <th width="20%">短所</th>
-    <td><%= @review.demerit %></td>
-  </tr>
+                <tr>
+                  <th>短所</th>
+                  <td><%= @review.demerit %></td>
+                </tr>
 
-  <tr>
-    <th width="20%">これから買う方へ</th>
-    <td><%= @review.advice %></td>
-  </tr>
-</table>
+                <tr>
+                  <th>これから買う方へ</th>
+                  <td><%= @review.advice %></td>
+                </tr>
+              </table>
 
-<div class="text-left mt-5">
-  <%= link_to "削除", admin_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %>
-</div>
+              <div class="text-center mt-5">
+                <%= link_to "削除", admin_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger w-25" %>
+              </div>
+          </div>
+        </div>
+
+    </div>
+  </main>
+</body>

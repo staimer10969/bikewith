@@ -1,38 +1,49 @@
-<h1>Myバイク投稿</h1>
+<body>
+  <main>
+    <div class="container mt-5">
+      <div class="title">
+        <h3>Myバイク投稿</h3>
+      </div>
 
-<%= form_with model: @review, url:mybike_reviews_path, local:true do |f| %>
+      <div class="row">
+        <div class="col-md-12 text-center mt-5">
+          <%= form_with model: @review, url:mybike_reviews_path, local:true do |f| %>
 
-  <div class="field-group new_mybikereview">
-	<%= f.label :車種選択, class: "col-lg-2" %></td>
-	<%= f.collection_select :item_id, Item.all, :id, :model, prompt: "選択してください" %>
-  </div>
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                	<th class="col-lg-4"><%= f.label :車種選択 %></th>
+                	<td><%= f.collection_select :item_id, Item.all, :id, :model, prompt: "選択してください" %></td>
+                </tr>
 
-  <div class="field-group new_mybikereview">
-    <%= f.label :購入動機, class: "col-lg-2" %>
-    <%= f.text_area :motive, size:"29*70" %>
-  </div>
-  <br>
+                <tr>
+                  <th class="col-lg-4"><%= f.label :購入動機 %></th>
+                  <td><%= f.text_area :motive, size:"29*70" %></td>
+                </tr>
 
-  <div class="field-group new_mybikereview">
-    <%= f.label :長所, class: "col-lg-2" %>
-    <%= f.text_area :merit, size:"29*70" %>
-  </div>
-  <br>
+                <tr>
+                  <th class="col-lg-4"><%= f.label :長所 %></th>
+                  <td><%= f.text_area :merit, size:"29*70" %></td>
+                </tr>
 
-  <div class="field-group new_mybikereview">
-    <%= f.label :短所, class: "col-lg-2" %>
-    <%= f.text_area :demerit, size:"29*70"%>
-  </div>
-  <br>
+                <tr>
+                  <th class="col-lg-4"><%= f.label :短所 %></th>
+                  <td><%= f.text_area :demerit, size:"29*70"%></td>
+                </tr>
 
-  <div class="field-group new_mybikereview">
-    <%= f.label :アドバイス, class: "col-lg-2" %>
-    <%= f.text_area :advice, size:"29*70"%>
-  </div>
-  <br>
+                <tr>
+                  <th class="col-lg-4"><%= f.label :アドバイス %></th>
+                  <td><%= f.text_area :advice, size:"29*70"%></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
 
-  <div class="text-center mt-5 ml-2">
-    <%= f.submit "投稿", class: "btn btn-success w-25" %>
-  </div>
-
-<% end %>
+            <div class="col-md-12 text-center mt-5">
+              <%= f.submit "投稿", class: "btn btn-success" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </main>
+</body>

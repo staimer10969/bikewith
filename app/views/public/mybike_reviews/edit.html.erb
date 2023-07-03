@@ -1,38 +1,50 @@
-<h1>Myバイク編集</h1>
+<body>
+  <main>
+    <div class="container mt-5">
+      <div class="title">
+        <h3>Myバイク編集</h3>
+      </div>
 
-<%= form_with model: @review, url:mybike_review_path, local:true do |f| %>
+      <div class="row">
+        <div class="col-md-12 mt-5">
+          <%= form_with model: @review, url:mybike_review_path, local:true do |f| %>
 
-  <div class="field-group edit_mybikereview">
-	<%= f.label :車種選択, class: "col-lg-2" %></td>
-	<%= f.collection_select :item_id, Item.all, :id, :model, prompt: "選択してください" %>
-  </div>
+            <table class="table table-borderless">
+              <tbody class="mt-1">
+                <tr>
+                  <th width="20%"><%= f.label :車種選択 %></th>
+                  <td><%= f.collection_select :item_id, Item.all, :id, :model, prompt: "選択してください" %></td>
+              	</tr>
 
-  <div class="field-group edit_mybikereview">
-    <%= f.label :購入動機, class: "col-lg-2" %>
-    <%= f.text_area :motive, size:"29*70" %>
-  </div>
-  <br>
+              	<tr>
+                  <th><%= f.label :購入動機 %></th>
+                  <td><%= f.text_area :motive, size:"29*70" %></td>
+                </tr>
 
-  <div class="field-group edit_mybikereview">
-    <%= f.label :長所, class: "col-lg-2" %>
-    <%= f.text_area :merit, size:"29*70" %>
-  </div>
-  <br>
+                <tr>
+                  <th><%= f.label :長所 %></th>
+                  <td><%= f.text_area :merit, size:"29*70" %></td>
+                </tr>
 
-  <div class="field-group edit_mybikereview">
-    <%= f.label :短所, class: "col-lg-2" %>
-    <%= f.text_area :demerit, size:"29*70"%>
-  </div>
-  <br>
+                <tr>
+                  <th><%= f.label :短所 %></th>
+                  <td><%= f.text_area :demerit, size:"29*70"%></td>
+                </tr>
 
-  <div class="field-group edit_mybikereview">
-    <%= f.label :アドバイス, class: "col-lg-2" %>
-    <%= f.text_area :advice, size:"29*70"%>
-  </div>
-  <br>
+                <tr>
+                  <th><%= f.label :アドバイス %></th>
+                  <td><%= f.text_area :advice, size:"29*70"%></td>
+                </tr>
+              </tbody>
+            </table>
 
-  <div class="text-center">
-    <%= f.submit "変更を保存", class: "btn btn-success w-25" %>
-  </div>
+            <div class="text-center mt-5">
+              <%= f.submit "変更を保存", class: "btn btn-success w-25" %>
+            </div>
 
-<% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

@@ -1,23 +1,24 @@
-<h1>バイク一覧</h1>
+<body>
+ <main>
+  <div class="container mt-5">
+   <div class="title">
+    <h3>バイク一覧</h3>
+   </div>
 
-<%= link_to "新規登録", new_admin_item_path, class:"btn btn-success" %>
-
-<table class="table item-table col-xl-12">
-  <thead class="table-active">
-   <tr>
-     <th>バイクID</th>
-     <th>車種</th>
-     <th>価格</th>
-     </tr>
-   </thead>
-
-  <tbody>
-   <% @items.each do |item| %>
-    <tr>
-     <th><%= item.id %></th>
-     <th><%= link_to item.model,admin_item_path(item.id) %></th>
-     <th><%= (item.price).to_s(:delimited) %></th>
-    </tr>
-   <% end %>
-   </tbody>
-</table>
+   <div class="row">
+    <div class="col-md-11">
+      <% @items.each do |item| %>
+       <div class="mt-5">
+        <%= link_to admin_item_path(item.id) do %>
+         <%= image_tag item.get_image, fallback: 'no_image.jpg', size: "200x150" %>
+        <% end %>
+         <p><%= item.model %></p>
+         <p><%= (item.price).to_s(:delimited) %></p>
+       <% end %>
+       </div>
+     <%= link_to "新規登録", new_admin_item_path, class:"btn btn-success" %>
+    </div>
+   </div>
+  </div>
+ </main>
+</body>

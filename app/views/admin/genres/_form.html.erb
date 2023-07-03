@@ -1,6 +1,6 @@
 <%= form_with(model: genre, url: url, local: true) do |f| %>
 	<%#= render 'layouts/error_messages', resource: genre %>
-	<%= f.label :genre_name, "ジャンル名:" %>
+	<%= f.label :genre_name, "ジャンル名:", class: "col-lg-2" %>
 	<%= f.text_field :genre_name %>
-	<%= f.submit submit, class: "btn btn-primary ml2" %>
+	<%= f.submit submit, class: "btn btn-primary w-25 ml-5" %>
 <% end %>
