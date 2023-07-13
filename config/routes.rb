@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    #get 'search' => 'homes#search', as: 'search'
+    get 'search' => 'homes#search', as: 'search'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update] #except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     get 'notices' => 'notices#index'
     resources :mybike_reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :bike_reviews, only: [:index, :show]
+    get 'search' => 'bike_reviews#search', as: 'search'
   end
 end
