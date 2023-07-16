@@ -8,6 +8,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :demerit
       t.string :advice
       t.integer :score
+      t.string :store
       t.string :address
       t.float :latitude
       t.float :longitude

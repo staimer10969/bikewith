@@ -21,6 +21,7 @@ class Public::MybikeReviewsController < ApplicationController
 
   def show
     @item = @review.item
+    gon.review = @review
   end
 
   def edit
@@ -43,7 +44,7 @@ class Public::MybikeReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:item_id, :motive, :merit, :demerit, :advice, :score, :address, :latitude, :longitude)
+    params.require(:review).permit(:item_id, :motive, :merit, :demerit, :advice, :score, :store, :address, :latitude, :longitude)
   end
 
   def set_review

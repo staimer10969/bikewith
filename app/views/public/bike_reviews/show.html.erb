@@ -71,10 +71,12 @@
                 </tr>
               </table>
 
-              <div class="text-right mt-5">
+            <h5 class="mt-5 ml-2">購入店舗：<%= @review.store %></h5><br>
+              <%= render 'public/mybike_reviews/map' %>
+
+              <div class="text-center mt-5">
                 <% if customer_signed_in? && @review.customer.id == current_customer.id %>
-                  <%= link_to "編集", edit_mybike_review_path(@review.id), class:"btn btn-success w-25" %><br>
-                  <br>
+                  <%= link_to "編集", edit_mybike_review_path(@review.id), class:"btn btn-success w-25" %>&emsp;
                   <%= link_to "削除", mybike_review_path(@review), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger w-25" %>
                 <% end %>
               </div>

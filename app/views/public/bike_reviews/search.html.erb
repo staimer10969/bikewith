@@ -8,32 +8,8 @@
       <div class="row">
         <div class="col-md-11 mt-5 ml-5">
 
-          <%= form_with model: @review, url: search_path, method: :get, local: true do |form| %>
-            <%= form.select :sort_select, [ ['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['商品の値段が高い順', 'price'] ] %>
-            <%= form.select :score, [ [10], ['30~40'], ['50~60'], ['70~80'], [80],['90~100'] ], prompt: "全て" %>
-            <%= form.select :price, [ ['100,000~200,000'], ['300,000~400,000'],[400000], ['500,000~600,000'], ['700,000~800,000'], ['900,000~1,000,000'] ], prompt: "全て" %>
-            <%= form.submit %>
-          <% end %>
+          <%= render 'reviews', reviews: @reviews, review: @review %>
 
-          <table class="table review-table">
-            <% @reviews.each do |review| %>
-              <tr>
-                <td>
-                  <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'80x80' %>
-                </td>
-                <td>
-                  <%= review.item.model %><br>
-                  <%= review.customer.name %><br>
-                  <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
-                </td>
-                <td class="text-center">
-                  <%= link_to bike_review_path(review.id) do %>
-                    <button class="btn btn-primary ml-5">詳細</button>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </table>
           <%= paginate @reviews %>
         </div>
       </div>

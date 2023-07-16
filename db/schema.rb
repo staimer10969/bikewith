@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 2023_06_16_090400) do
     t.string "demerit"
     t.string "advice"
     t.integer "score"
+    t.string "store"
     t.string "address"
     t.float "latitude"
     t.float "longitude"

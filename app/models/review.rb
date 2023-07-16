@@ -20,7 +20,7 @@ class Review < ApplicationRecord
       reviews = includes(:item).where(score: score)
     else
       reviews = includes(:item).where(items: {price: price}).where(score: score)
-  end
+    end
     case sort_select
       when 'new'
           return reviews.order('reviews.created_at DESC')
@@ -32,5 +32,8 @@ class Review < ApplicationRecord
           return reviews.order('items.price DESC')
     end
   end
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
 end

@@ -6,7 +6,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-12 text-center mt-5">
+        <div class="col-md-12 text-center mt-5 actions">
           <%= form_with model: @review, url:mybike_reviews_path, local:true do |f| %>
 
             <table class="table table-borderless">
@@ -40,8 +40,19 @@
                   <th class="col-lg-4"><%= f.label :点数評価 %></th>
                   <td><%= f.text_area :score, size:"29*70" %></td>
                 </tr>
+
+                <tr>
+                  <th class="col-lg-4"><%= f.label :購入店舗名 %></th>
+                  <td><%= f.text_area :store, size:"29*70" %></td>
+                </tr>
+
+                <tr>
+                  <th class="col-lg-4"><%= f.label :住所 %></th>
+                  <td><%= f.text_field :address, size:"29*70" %></td>
+                </tr>
               </tbody>
             </table>
+
         </div>
 
             <div class="col-md-12 text-center mt-5">

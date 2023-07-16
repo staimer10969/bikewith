@@ -4,6 +4,7 @@ class Admin::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @item = @review.item
+    gon.studio = @studio
   end
 
   def destroy

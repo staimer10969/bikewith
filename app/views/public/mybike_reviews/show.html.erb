@@ -71,9 +71,11 @@
                 </tr>
               </table>
 
-              <div class="text-right mt-5">
-                <%= link_to "編集", edit_mybike_review_path(@review.id), class:"btn btn-success w-25" %><br>
-                <br>
+            <h5 class="mt-5 ml-2">購入店舗：<%= @review.store %></h5><br>
+              <%= render 'map' %>
+
+              <div class="text-center mt-5">
+                <%= link_to "編集", edit_mybike_review_path(@review.id), class:"btn btn-success w-25" %>&emsp;
                 <%= link_to "削除", mybike_review_path(@review), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger w-25" %>
               </div>
           </div>
