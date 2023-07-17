@@ -30,8 +30,12 @@ Rails.application.routes.draw do
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch 'customers/withdraw' => 'customers#withdraw'
     get 'notices' => 'notices#index'
-    resources :mybike_reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :bike_reviews, only: [:index, :show]
+    resources :mybike_reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:create]
+    end
+    resources :bike_reviews, only: [:index, :show] do
+      resources :comments, only: [:create]
+    end
     get 'search' => 'bike_reviews#search', as: 'search'
   end
 end

@@ -2,7 +2,6 @@ class Public::BikeReviewsController < ApplicationController
 
   def index
     @reviews = Review.all.page(params[:page]).per(10).order('created_at DESC')
-
   end
 
   def search
@@ -16,6 +15,8 @@ class Public::BikeReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @item = @review.item
+    @comment = Comment.new
+    #comment = @review.comments
     gon.review = @review
   end
 

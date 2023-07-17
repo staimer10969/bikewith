@@ -21,6 +21,8 @@ class Public::MybikeReviewsController < ApplicationController
 
   def show
     @item = @review.item
+    @comment = Comment.new
+    @comment = @review.comments
     gon.review = @review
   end
 

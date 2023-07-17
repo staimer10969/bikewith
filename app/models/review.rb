@@ -3,6 +3,8 @@ class Review < ApplicationRecord
   belongs_to :item
   has_one_attached :image
 
+  has_many :comments, dependent: :destroy
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
