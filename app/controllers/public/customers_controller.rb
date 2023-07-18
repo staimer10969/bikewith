@@ -3,8 +3,10 @@ class Public::CustomersController < ApplicationController
    before_action :set_customer, only: [:show, :edit, :update, :confirm_withdraw, :withdraw]
 
   def show
+    if params[:format]
     #@customer = current_customer
-    #@customer = Customer.find(params[:format])
+      @customer = Customer.find(params[:format])
+    end
   end
 
   def edit

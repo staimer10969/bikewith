@@ -31,10 +31,10 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
     get 'notices' => 'notices#index'
     resources :mybike_reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :destroy]
     end
     resources :bike_reviews, only: [:index, :show] do
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :destroy]
     end
     get 'search' => 'bike_reviews#search', as: 'search'
   end
