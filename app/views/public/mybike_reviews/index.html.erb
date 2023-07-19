@@ -13,6 +13,9 @@
                   <td><%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'80x80' %></td>
                   <td>
                     <%= review.item.model %><br>
+                    <%= link_to customers_information_path(review.customer.id) do %>
+                      <%= review.customer.name %><br>
+                    <% end %>
                     <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
                   </td>
                   <td class="text-center">

@@ -16,7 +16,11 @@ class Public::MybikeReviewsController < ApplicationController
   end
 
   def index
-    @reviews = current_customer.reviews.all.page(params[:page]).per(10).order('created_at DESC')
+    #if params[:format]
+      @reviews = current_customer.reviews.all.page(params[:page]).per(10).order('created_at DESC')
+    #else
+      #@reviews = Review.all.customer.page(params[:page]).per(10).order('created_at DESC')
+    #end
   end
 
   def show
