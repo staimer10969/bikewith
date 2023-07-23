@@ -6,7 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment = current_customer.comments.new(comment_params)
     @comment.review_id = @review.id
 
-    if @comment.save
+    if @comment.save!
        redirect_to bike_review_path(@review.id)
     else
        redirect_to mybike_review_path(@review.id)
@@ -25,7 +25,7 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:review_comment)
+    params.permit(:review_comment)
   end
 
 end
