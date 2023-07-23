@@ -10,3 +10,11 @@ Admin.create!(
   email: "dmm@gmail.com",
   password: "114514"
 )
+
+Tag.create([
+	{ name: ‘ネイキッド’ },
+	{ name: ‘スパースポーツ’ },
+	{ name: ‘クルーザー（アメリカン）’ },
+	{ name: ‘ストリートファイター’ },
+	{ name: ‘ツアラー’ }
+])
