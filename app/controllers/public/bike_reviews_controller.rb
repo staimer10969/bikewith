@@ -2,7 +2,7 @@ class Public::BikeReviewsController < ApplicationController
 
   def index
     @reviews = Review.all.page(params[:page]).per(10).order('created_at DESC')
-    @tag_list = ReviewTag.all
+    @tag_list = Tag.all
   end
 
   def search
@@ -19,8 +19,8 @@ class Public::BikeReviewsController < ApplicationController
     @comment = Comment.new
     #comment = @review.comments
     gon.review = @review
-    @tag_list = @review.review_tags.pluck(:name).join(',')
-    @reviewtags = @review.reviewtags
+    #@tag_list = @review.review_tags.pluck(:name).join(',')
+    #@reviewtags = @review.reviewtags
   end
 
   private

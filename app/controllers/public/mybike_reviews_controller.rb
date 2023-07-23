@@ -8,19 +8,20 @@ class Public::MybikeReviewsController < ApplicationController
   end
 
   def create
+
     @item = Item.find(review_params[:item_id])
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
-    @review.save
+    @review.save!
     redirect_to mybike_review_path(@review.id)
+    # tag_list = params[:review][:name].split(',')
+    # if @review.save
+    #   @review.save_reviewtags(tag_list)
 
-    tag_list = params[:review][:name].split(',')
-    if @review.save
-      @review.save_reviewtags(tag_list)
-      redirect_to mybike_review_path(@review.id)
-    else
-      render :new
-    end
+    # else
+    #   render :new
+    # end
+
   end
 
   def index
@@ -38,7 +39,7 @@ class Public::MybikeReviewsController < ApplicationController
     @comment = @review.comments
     gon.review = @review
     @tag_list = @review.review_tags.pluck(:name).join(',')
-    @reviewtags = @review.reviewtags
+    @review_tags = @review.review_tags
   end
 
   def edit

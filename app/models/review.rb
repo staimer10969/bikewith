@@ -4,6 +4,8 @@ class Review < ApplicationRecord
   has_one_attached :image
 
   has_many :comments, dependent: :destroy
+  has_many :review_tags, dependent: :destroy
+  has_many :tags, through: :review_tags
 
   def get_image
     unless image.attached?
@@ -32,6 +34,26 @@ class Review < ApplicationRecord
         #return all.order(Arel.sql('count(post_id) desc').pluck(:review_id))
       when 'price'
           return reviews.order('items.price DESC')
+    end
+  end
+
+  def save_reviewtags(tags)
+  # タグが存在していれば、タグの名前を配列として全て取得
+    current_tags = self.reviewtags.pluck(:name) unless self.reviewtags.nil?
+    # 現在取得したタグから送られてきたタグを除いてoldtagとする
+    old_tags = current_tags - tags
+    # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
+    new_tags = tags - current_tags
+
+    # 古いタグを消す
+    old_tags.each do |old_name|
+      self.reviewtags.delete ReviewTag.find_by(name:old_name)
+    end
+
+    # 新しいタグを保存
+    new_tags.each do |new_name|
+      reviewtag = ReviewTag.find_or_create_by(name:new_name)
+      self.reviewtags << reviewtag
     end
   end
 
