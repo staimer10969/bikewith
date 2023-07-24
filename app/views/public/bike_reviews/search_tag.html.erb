@@ -1,0 +1,18 @@
+<body>
+  <main>
+    <div class="container mt-5">
+      <div class="title">
+        <h3>Myバイク投稿一覧</h3>
+      </div>
+
+      <div class="row">
+        <div class="col-md-11 mt-5 ml-5">
+
+          <%= render 'reviews', reviews: @reviews, review: @review %>
+
+          <%= paginate @reviews %>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

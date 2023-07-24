@@ -40,11 +40,16 @@
                   <th><%= f.label :点数評価 %></th>
                   <td><%= f.text_area :score, size:"29*70" %></td>
                 </tr>
+
+                <tr>
+                  <th>タグ(,で区切ると複数タグ登録できます)</th>
+                  <td><%= f.text_area :name, value: @tag_list, size:"29*70" %></td>
+                </tr>
+
               </tbody>
             </table>
 
-            <!--<label>タグ(,で区切ると複数タグ登録できます)</label>-->
-            <!--<%#= f.text_field :name, value: @tag_list, class: 'form-control' %>-->
+
 
             <div class="text-center mt-5">
               <%= f.submit "変更を保存", class: "btn btn-success w-25" %>

@@ -14,12 +14,12 @@ class Public::MybikeReviewsController < ApplicationController
     @review.customer_id = current_customer.id
     @review.save!
     redirect_to mybike_review_path(@review.id)
-    # tag_list = params[:review][:name].split(',')
-    # if @review.save
-    #   @review.save_review_tags(tag_list)
-    # else
-    #   render :new
-    # end
+    tag_list = params[:review][:name].split(',')
+    if @review.save
+      @review.save_review_tags(tag_list)
+    else
+      render :new
+    end
   end
 
   def index

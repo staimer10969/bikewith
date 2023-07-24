@@ -1,7 +1,11 @@
 class Public::BikeReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all.page(params[:page]).per(10).order('created_at DESC')
+    if params[:customer_id]
+      @reviews = Review.where(customer_id: params[:customer_id]).page(params[:page]).per(10).order('created_at DESC')
+    else
+      @reviews = Review.all.page(params[:page]).per(10).order('created_at DESC')
+    end
     @tag_list = Tag.all
   end
 

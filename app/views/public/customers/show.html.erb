@@ -37,7 +37,7 @@
                   <%= link_to "プロフィール編集", customers_information_edit_path(@customer.id), class:"btn btn-success" %>&nbsp;
                   <%= link_to "＋Myバイク投稿", new_mybike_review_path, class:"btn btn-primary" %>&nbsp;
                 <% end %>
-                  <%= link_to "Myバイク投稿履歴一覧", bike_reviews_path(@customer.id), class:"btn btn-info" %>
+                  <%= link_to "Myバイク投稿履歴一覧", bike_reviews_path(customer_id: @customer.id), class:"btn btn-info" %>
               </div>
           </div>
 

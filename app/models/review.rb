@@ -44,7 +44,7 @@ class Review < ApplicationRecord
 
   def save_review_tags(tags)
   # タグが存在していれば、タグの名前を配列として全て取得
-    current_tags = self.review_tags.pluck(:name) unless self.review_tags.nil?
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
     # 現在取得したタグから送られてきたタグを除いてoldtagとする
     old_tags = current_tags - tags
     # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
@@ -52,13 +52,13 @@ class Review < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old_name|
-      self.review_tags.delete ReviewTag.find_by(name:old_name)
+      self.tags.delete Tag.find_by(name:old_name)
     end
 
     # 新しいタグを保存
     new_tags.each do |new_name|
-      review_tag = ReviewTag.find_or_create_by(name:new_name)
-      self.review_tags << review_tag
+      review_tag = Tag.find_or_create_by(name:new_name)
+      self.tags << review_tag
     end
   end
 
