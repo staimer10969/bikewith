@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
     resources :bike_reviews, only: [:index, :show] do
       resources :comments, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
     end
     get 'search' => 'bike_reviews#search', as: 'search'
     get 'search_tag' => 'bike_reviews#search_tag'

@@ -69,16 +69,16 @@
                   <th>点数評価</th>
                   <td><%= @review.score %>点</td>
                 </tr>
-                
-                <tr>
-                  <th>タグリスト</th>
-                  <td>
-                    <% @review_tags.each do |tag| %>
-                    <i class="fa-sharp fa-solid fa-tag"></i>
-                    <%= link_to tag.name,search_tag_path(review_tag_id: tag.id) %>
-                    <% end %>
-                  </td>
-                </tr>
+
+                <!--<tr>-->
+                <!--  <th>タグリスト</th>-->
+                <!--  <td>-->
+                <!--    <%# @review_tags.each do |tag| %>-->
+                <!--    <i class="fa-sharp fa-solid fa-tag"></i>-->
+                <!--    <%#= link_to tag.name,search_tag_path(review_tag_id: tag.id) %>-->
+                <!--    <%# end %>-->
+                <!--  </td>-->
+                <!--</tr>-->
               </table>
 
             <h5 class="mt-5 ml-2">購入店舗：<%= @review.store %></h5><br>
@@ -95,18 +95,31 @@
                       <%= link_to "削除", bike_review_comment_path(@review), method: :delete %>
                      <% end %>
                   </div>
-
                 <% end %>
 
 
                 <%= form_with url: bike_review_comments_path(@review.id), local:true do |f| %>
                 <%= f.text_area :review_comment, size:"125x5", rows: '5', placeholder: "コメントする" %><br>
-
-
               <div class="text-right mt-3 action">
                 <%= f.submit "送信" %>
               </div>
                 <% end %>
+
+              <div class="text-right mt-3">
+                <% if @review.liked_by?(current_customer) %>
+                  <p>
+                    <%= link_to bike_review_likes_path(@review), method: :delete do %>
+                      ♥<%= @review.likes.count %> いいね
+                    <% end %>
+                  </p>
+                  <% else %>
+                  <p>
+                    <%= link_to bike_review_likes_path(@review), method: :post do %>
+                      ♡<%= @review.likes.count %> いいね
+                    <% end %>
+                  </p>
+                <% end %>
+              </div>
             </div>
 
               <div class="text-center mt-5">

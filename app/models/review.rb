@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   has_one_attached :image
 
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :review_tags, dependent: :destroy
   has_many :tags, through: :review_tags
 
@@ -13,6 +14,10 @@ class Review < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [250, 250]).processed
+  end
+
+  def liked_by?(customer)
+    likes.exists?(customer_id: customer.id)
   end
 
   def self.sort(sort_select, score, price)

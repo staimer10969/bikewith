@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_one_attached :image
 
   enum skill:{beginner:0, intermediate:1, advanced:2, professional:3}
