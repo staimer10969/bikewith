@@ -41,6 +41,11 @@
                   <td><%= f.text_area :score, size:"29*70" %></td>
                 </tr>
 
+                <!--<tr>-->
+                <!--  <th class="col-lg-4">タグ(,で区切ると複数タグ登録できます)</th>-->
+                <!--  <td><%#= f.text_area :name,value: @tag_list, size:"29*70" %></td>-->
+                <!--</tr>-->
+
                 <tr>
                   <th class="col-lg-4"><%= f.label :購入店舗名 %></th>
                   <td><%= f.text_area :store, size:"29*70" %></td>
@@ -55,7 +60,7 @@
 
         </div>
 
-            <div class="col-md-12 text-center mt-5">
+            <div class="col-md-12 text-center mt-5 actions">
               <%= f.submit "投稿", class: "btn btn-success" %>
             </div>
           <% end %>

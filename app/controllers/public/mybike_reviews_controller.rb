@@ -16,20 +16,14 @@ class Public::MybikeReviewsController < ApplicationController
     redirect_to mybike_review_path(@review.id)
     # tag_list = params[:review][:name].split(',')
     # if @review.save
-    #   @review.save_reviewtags(tag_list)
-
+    #   @review.save_review_tags(tag_list)
     # else
     #   render :new
     # end
-
   end
 
   def index
-    #if params[:format]
-      @reviews = current_customer.reviews.all.page(params[:page]).per(10).order('created_at DESC')
-    #else
-      #@reviews = Review.all.customer.page(params[:page]).per(10).order('created_at DESC')
-    #end
+    @reviews = current_customer.reviews.all.page(params[:page]).per(10).order('created_at DESC')
     @tag_list = ReviewTag.all
   end
 
@@ -44,13 +38,13 @@ class Public::MybikeReviewsController < ApplicationController
 
   def edit
     #@item = @review.item
-    @tag_list = @review.reviewtags.pluck(:name).join(',')
+    @tag_list = @review.review_tags.pluck(:name).join(',')
   end
 
   def update
     tag_list=params[:review][:name].split(',')
     if @review.update(review_params)
-      @review.save_reviewtags(tag_list)
+      @review.save_review_tags(tag_list)
       redirect_to mybike_review_path(@review.id)
     else
       render 'edit'
@@ -66,7 +60,7 @@ class Public::MybikeReviewsController < ApplicationController
     #検索結果画面でもタグ一覧表示
     @tag_list = ReviewTag.all
     　#検索されたタグを受け取る
-    @tag = ReviewTag.find(params[:reviewtag_id])
+    @tag = ReviewTag.find(params[:review_tag_id])
     　#検索されたタグに紐づく投稿を表示
     @reviews = @tag.reviews
   end
