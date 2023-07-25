@@ -17,6 +17,12 @@ class Public::BikeReviewsController < ApplicationController
     #@reviews = Review.all.page(params[:page]).per(10).order('created_at DESC')
   end
 
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:review_tag_id])
+    @reviews = @tag.reviews.page(params[:page]).per(10)
+  end
+
   def show
     @review = Review.find(params[:id])
     @item = @review.item

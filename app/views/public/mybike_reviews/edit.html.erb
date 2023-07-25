@@ -43,7 +43,7 @@
 
                 <tr>
                   <th>タグ(,で区切ると複数タグ登録できます)</th>
-                  <td><%= f.text_area :name, value: @tag_list, size:"29*70" %></td>
+                  <td><%= f.text_area :name, value: @review.tags.pluck(:name).join(','), size:"29*70" %></td>
                 </tr>
 
               </tbody>

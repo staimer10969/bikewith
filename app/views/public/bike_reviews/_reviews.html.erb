@@ -5,10 +5,10 @@
   <%= form.submit %>
 <% end %>
 
-  <% @tag_list.each do |list|%>
+  <% @tag_list.each do |tag_list|%>
     <i class="fa-sharp fa-solid fa-tag"></i>
-    <%= link_to list.name,search_tag_path(review_tag_id: list.id) %>
-    <%= "(#{list.reviews.count})" %>
+    <%= link_to tag_list.name,search_tag_path(review_tag_id: tag_list.id) %>
+    <%= "(#{tag_list.reviews.count})" %>
   <% end %>
 
 
