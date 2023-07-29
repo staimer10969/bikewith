@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
 
   def create_notice_comment!(current_customer, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
-    temp_ids = Comment.select(:customer_id).where(like_id: id).where.not(customer_id: current_customer.id).distinct
+    temp_ids = Comment.select(:customer_id).where(review_id: id).where.not(customer_id: current_customer.id).distinct
     temp_ids.each do |temp_id|
       save_notice_comment!(current_customer, comment_id, temp_id['customer_id'])
     end
@@ -18,7 +18,7 @@ class Comment < ApplicationRecord
   def save_notice_comment!(current_customer, comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     @notice = current_customer.active_notices.new(
-      like_id: id,
+      review_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
       action: 'comment'

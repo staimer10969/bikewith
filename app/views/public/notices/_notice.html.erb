@@ -1,0 +1,30 @@
+<% visiter = notice.visiter %>
+<% visited = notice.visited %>
+
+<div class="col-md-6.mx-auto">
+  <div class="form-inline">
+       <%= link_to customer_path(visitor) do %>
+       <%= customer.name %>さんが
+       <% end %>
+
+       <% case notice.action %>
+       <% when 'like' then %>
+        <%= link_to 'あなたの投稿', notice.review_id, style: "font-weight: bold;" %>
+        にいいねしました
+       <% when 'comment' then %>
+        <% if notice.review.customer_id == visited.id %>
+          <%= link_to "あなたの投稿", notice.review_id, style: "font-weight: bold;" %>
+        <% else %>
+            <%= link_to review_path(notice.post) do %>
+              <%= notice.review.customer.name + 'さんの投稿' %>
+              にコメントしました
+          <p class="text-muted.mb-0">
+            <%= Comment.find_by(id: notice.comment_id)&.comment %>
+          </p>
+        <% end %>
+
+    <div class="small.text-muted.text-right">
+      <%= time_ago_in_words(notice.created_at).upcase%>
+    </div>
+  </div>
+</div>

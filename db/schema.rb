@@ -104,14 +104,14 @@ ActiveRecord::Schema.define(version: 2023_07_23_075046) do
   create_table "notices", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
+    t.integer "review_id"
     t.integer "comment_id"
-    t.integer "like_id"
     t.string "action", default: "", null: false
     t.datetime "checked", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_notices_on_comment_id"
-    t.index ["like_id"], name: "index_notices_on_like_id"
+    t.index ["review_id"], name: "index_notices_on_review_id"
     t.index ["visited_id"], name: "index_notices_on_visited_id"
     t.index ["visitor_id"], name: "index_notices_on_visitor_id"
   end
