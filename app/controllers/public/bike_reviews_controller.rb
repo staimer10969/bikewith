@@ -6,7 +6,7 @@ class Public::BikeReviewsController < ApplicationController
     else
       @reviews = Review.all.page(params[:page]).per(10).order('created_at DESC')
     end
-    @tag_list = Tag.all
+      @tag_list = Tag.all
   end
 
   def search
@@ -15,6 +15,7 @@ class Public::BikeReviewsController < ApplicationController
     price = params[:price]
     @reviews = Review.sort(sort_select, score, price).page(params[:page]).per(10)
     #@reviews = Review.all.page(params[:page]).per(10).order('created_at DESC')
+    @tag_list = Tag.all
   end
 
   def search_tag

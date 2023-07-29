@@ -68,7 +68,7 @@ class Review < ApplicationRecord
     temp = Notice.where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ? ", current_customer.id, customer_id, id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
-      @notice = current_customer.active_notices.new(
+      notice = current_customer.active_notices.new(
         review_id: id,
         visited_id: customer_id,
         action: 'like'
@@ -76,6 +76,27 @@ class Review < ApplicationRecord
       # 自分の投稿に対するいいねの場合は、通知済みとする
       if notice.visitor_id == notice.visited_id
         notice.checked = true
+      end
+      notice.save if notice.valid?
+    end
+  end
+
+  def create_notice_comment!(current_customer, review_id, id)
+    # すでに「いいね」されているか検索
+    temp = Notice.where(["visitor_id = ? and visited_id = ? and review_id = ? and comment_id = ? and action = ? ", current_customer.id, review_id, customer_id, id, 'comment'])
+    # いいねされていない場合のみ、通知レコードを作成
+    if temp.blank?
+      notice = current_customer.active_notices.new(
+        comment_id: id,
+        review_id: review_id,
+        visited_id: customer_id,
+        action: 'comment'
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notice.visitor_id == notice.visited_id
+        notice.checked = true
+      else
+        notice.checked = false
       end
       notice.save if notice.valid?
     end
