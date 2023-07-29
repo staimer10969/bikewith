@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update'
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch 'customers/withdraw' => 'customers#withdraw'
-    get 'notices' => 'notices#index'
+    resources :notices, only: :index
     resources :mybike_reviews, only: [:new, :create, :index, :show, :edit, :update, :destroy]
 
     resources :bike_reviews, only: [:index, :show] do

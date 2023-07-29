@@ -102,12 +102,18 @@ ActiveRecord::Schema.define(version: 2023_07_23_075046) do
   end
 
   create_table "notices", force: :cascade do |t|
-    t.integer "comment_id", null: false
-    t.integer "like_id", null: false
-    t.string "notice_content", null: false
-    t.datetime "notice_at", null: false
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "comment_id"
+    t.integer "like_id"
+    t.string "action", default: "", null: false
+    t.datetime "checked", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_notices_on_comment_id"
+    t.index ["like_id"], name: "index_notices_on_like_id"
+    t.index ["visited_id"], name: "index_notices_on_visited_id"
+    t.index ["visitor_id"], name: "index_notices_on_visitor_id"
   end
 
   create_table "review_tags", force: :cascade do |t|

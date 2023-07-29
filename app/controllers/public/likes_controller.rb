@@ -5,6 +5,7 @@ class Public::LikesController < ApplicationController
     @like = current_customer.likes.new(review_id: @review.id)
     @like.save
     redirect_to bike_review_path(@review.id)
+    post.create_notice_like!(current_customer)
   end
 
   def destroy

@@ -7,6 +7,7 @@ class Public::CommentsController < ApplicationController
     @comment.review_id = @review.id
 
     if @comment.save!
+       @post.create_notice_comment!(current_customer, @comment.id)
        redirect_to bike_review_path(@review.id)
     else
        redirect_to mybike_review_path(@review.id)
