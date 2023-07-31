@@ -6,7 +6,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-12 mt-5">
+        <div class="col-md-6 offset-md-3 mt-5">
            <%= form_with(model: @customer, url:customers_information_path, local: true, method: :patch) do |f| %>
 
            <table class="table table-borderless">
@@ -17,9 +17,9 @@
                  </tr>
 
                  <tr>
-                   <th class="col-lg-3"><%= f.label :"ライダースキル" %></th>
+                   <th class="col-lg-4"><%= f.label :"ライダースキル" %></th>
                    <td>
-                    　 <%= f.radio_button :skill, "beginner" %>
+                       <%= f.radio_button :skill, "beginner" %>
                        <%= f.label :skill_beginner, "初級" %>
                        <%= f.radio_button :skill, "intermediate" %>
                        <%= f.label :skill_intermediate, "中級" %>

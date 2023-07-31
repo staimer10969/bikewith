@@ -106,18 +106,20 @@
                 <% end %>
 
               <div class="text-right mt-3">
-                <% if @review.liked_by?(current_customer) %>
-                  <p>
-                    <%= link_to bike_review_likes_path(@review), method: :delete do %>
-                      ♥<%= @review.likes.count %> いいね
-                    <% end %>
-                  </p>
-                  <% else %>
-                  <p>
-                    <%= link_to bike_review_likes_path(@review), method: :post do %>
-                      ♡<%= @review.likes.count %> いいね
-                    <% end %>
-                  </p>
+                <% if current_customer %>
+                  <% if @review.liked_by?(current_customer) %>
+                    <p>
+                      <%= link_to bike_review_likes_path(@review), method: :delete do %>
+                        ♥<%= @review.likes.count %> いいね
+                      <% end %>
+                    </p>
+                    <% else %>
+                    <p>
+                      <%= link_to bike_review_likes_path(@review), method: :post do %>
+                        ♡<%= @review.likes.count %> いいね
+                      <% end %>
+                    </p>
+                  <% end %>
                 <% end %>
               </div>
             </div>

@@ -7,9 +7,9 @@
       <br>
 
         <div class="row">
-          <div class="col-md-12">
+          <!--<div class="col-md-12">-->
             <% @reviews.each do |review| %>
-              <div class="new-reviews mt-3 mr-5">
+              <div class="new-reviews mt-3 mr-5 col-md-3">
                 <%= link_to bike_review_path(review.id) do %>
                   <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'200x150' %>
                 <% end %>
@@ -18,7 +18,7 @@
                 <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
               </div>
             <% end %>
-          </div>
+          <!--</div>-->
         </div>
 
       <div class="reviews-more text-right mt-3">
