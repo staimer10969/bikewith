@@ -1,19 +1,21 @@
 <body>
   <main>
-    <div class="container">
-      <div class='row justify-content-center mx-auto'>
-          <div class="notice_box">
-              <h4 class="text-center"><i class="fas fa-bell"></i>通知</h4>
-               <!--<p class="text-right"><%#= link_to "全削除",notification_path(@notifications), method: :delete,class:"btn btn-light fas fa-trash" %></p>-->
-          <!--自分の投稿に対するいいね、コメントは通知に表示しない     -->
-          <%  notices = @notices.where.not(visitor_id: current_customer.id) %>    
-            <% if @notices.exists? %>
-              <%= render @notices %>
-            <% else %>
-              <p>通知はありません</p>
-            <% end %>
-  　　　　</div>
-   　　</div>
+    <div class="container mt-5">
+      <div class="notice-title">
+        <h4>通知一覧</h4>
+      </div>
+          <div class='row justify-content-center mx-auto mt-5'>
+            <div class="notice_box">
+                   <!--<p class="text-right"><%#= link_to "全削除",notification_path(@notifications), method: :delete,class:"btn btn-light fas fa-trash" %></p>-->
+              <!--自分の投稿に対するいいね、コメントは通知に表示しない     -->
+              <%  notices = @notices.where.not(visitor_id: current_customer.id) %>
+                <% if @notices.exists? %>
+                  <%= render @notices %>
+                <% else %>
+                  <p>通知はありません</p>
+                <% end %>
+      　　　　</div>
+       　　</div>
     </div>
   </main>
 </body>

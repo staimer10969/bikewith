@@ -6,7 +6,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-12 text-center mt-5 actions">
+        <div class="col-md-12 offset-md-3 mt-5 actions">
           <%= form_with model: @review, url:mybike_reviews_path, local:true do |f| %>
 
             <table class="table table-borderless">
@@ -57,12 +57,12 @@
                 </tr>
               </tbody>
             </table>
-            <div class="mt-5">
-              <%= f.submit "投稿", class: "btn btn-success" %>
-            </div>
-          <% end %>
         </div>
 
+          <div class="col-md-12 mt-5 text-center">
+            <%= f.submit "投稿", class: "btn btn-success w-25" %>
+          </div>
+        <% end %>
 
       </div>
     </div>
