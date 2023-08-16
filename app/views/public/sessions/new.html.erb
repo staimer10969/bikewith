@@ -1,15 +1,15 @@
 <body>
   <main>
     <div class="container mt-5">
-      <div class="title">
-        <h3>ログイン</h3>
-      </div>
 
       <div class="row">
-        <div class="col-md-12 mt-5">
+        <div class="col-md-12 mt-5 offset-md-3">
+          <div class="title">
+            <h3>ログイン</h3>
+          </div>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-            <div class="form-group">
+            <div class="form-group mt-5">
               <%= f.label :メールアドレス, class: "col-lg-3" %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-xs-3" %>
             </div>
@@ -25,13 +25,15 @@
                 <%#= f.label :remember_me %>
               </div>-->
             <%# end %>
+        </div>
 
-            <div class="actions ml-3 mt-5">
-              <%= f.submit "ログイン", class: "btn btn-success" %>
+        <div class="col-md-12 text-center">
+            <div class="actions mt-5">
+              <%= f.submit "ログイン", class: "btn btn-success w-25" %>
             </div>
           <% end %>
 
-          <div class="actions-login mt-4 ml-3">
+          <div class="actions-login mt-5">
             <p>
               会員登録が済みでない方は、
               <%= link_to "こちら", new_customer_registration_path %>
@@ -39,9 +41,11 @@
               <%#= render "public/shared/links" %>
             </p>
           </div>
-
+          <div class="mb-5"></div>
         </div>
       </div>
     </div>
   </main>
+  <div class="mb-5"></div>
+  <br>
 </body>

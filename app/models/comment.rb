@@ -3,7 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :customer
   belongs_to :review
 
-  has_many :notices, dependent: :destroy
+ has_many :notices, dependent: :destroy
 
   def create_notice_comment!(current_customer, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
@@ -28,6 +28,6 @@ class Comment < ApplicationRecord
       notice.checked = true
     end
     notice.save if notice.valid?
-  end
+  end 
 
 end
