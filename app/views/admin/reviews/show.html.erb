@@ -37,6 +37,7 @@
                 <th>価格</th>
                 <td><%= @item.price %></td>
               </tr>
+
             </table>
         </div>
       </div>
@@ -69,14 +70,67 @@
                   <th>点数評価</th>
                   <td><%= @review.score %>点</td>
                 </tr>
+
+                <tr>
+                  <th>タグ</th>
+                    <td>
+                      <% @review_tags.each do |review_tag| %>
+                      <i class="fa-sharp fa-solid fa-tag"></i>
+                      <%= link_to review_tag.tag.name,search_tag_path(review_tag_id: review_tag.id) %>
+                      <% end %>
+                    </td>
+                </tr>
               </table>
+
+              <h5 class="mt-5 ml-2">購入店舗：<%= @review.store %></h5><br>
+              <%= render 'public/mybike_reviews/map' %>
+
+              <div class="col-md-12 mt-5">
+                <h5>コメント件数：<%= @review.comments.count %></h5>
+                  <% @review.comments.each do |comment| %>
+                    <%= comment.customer.name %>:
+                    <%= comment.review_comment %><br>
+
+                    <!--<div class="text-right">-->
+                    <!--   <%# if comment.customer == current_customer %>-->
+                    <!--    <%#= link_to "削除", bike_review_comment_path(@review), method: :delete %>-->
+                    <!--   <#% end %>-->
+                    <!--</div>-->
+                  <% end %>
+                <br>
+
+                  <%= form_with url: bike_review_comments_path(@review.id), local:true do |f| %>
+                  <%= f.text_area :review_comment, size:"125x5", rows: '5', placeholder: "コメントする" %><br>
+                <div class="text-right mt-3 action">
+                  <%= f.submit "送信" %>
+                </div>
+                  <% end %>
+
+                <div class="text-right mt-3">
+                  <% if current_customer %>
+                    <% if @review.liked_by?(current_customer) %>
+                      <p>
+                        <%= link_to bike_review_likes_path(@review), method: :delete do %>
+                          ♥<%= @review.likes.count %> いいね
+                        <% end %>
+                      </p>
+                      <% else %>
+                      <p>
+                        <%= link_to bike_review_likes_path(@review), method: :post do %>
+                          ♡<%= @review.likes.count %> いいね
+                        <% end %>
+                      </p>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
 
               <div class="text-center mt-5">
                 <%= link_to "削除", admin_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger w-25" %>
               </div>
           </div>
         </div>
-
+      <div class="mb-5"></div>
     </div>
   </main>
 </body>

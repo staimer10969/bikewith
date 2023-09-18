@@ -7,16 +7,32 @@
 
       <div class="row">
         <div class="col-md-11 mt-5 ml-5">
+
+          <%= form_with model: @review, url: search_path, method: :get, local: true do |form| %>
+            <%= form.select :sort_select, [ ['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['商品の値段が高い順', 'price'] ] %>
+            <%= form.select :score, [ [10], [20], [30], [40], [50], [60], [70], [80], [90], [100] ], prompt: "点数評価" %>
+            <%= form.select :price, [ [100000], [200000], [300000], [400000], [500000], [600000], [700000], [800000], [900000], [1000000] ], prompt: "価格" %>
+            <%= form.submit %>
+          <% end %>
+
+          <% @tag_list.each do |tag_list|%>
+            <i class="fa-sharp fa-solid fa-tag"></i>
+            <%= link_to tag_list.name,search_tag_path(review_tag_id: tag_list.id) %>
+            <%= "(#{tag_list.reviews.count})" %>
+          <% end %>
+
           <table class="table review-table">
             <% @reviews.each do |review| %>
               <tr>
                 <td>
-                  <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'80x80' %>
+                  <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'120x120' %>
                 </td>
                 <td>
                   <%= review.item.model %><br>
                   <%= review.customer.name %><br>
-                  <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
+                  更新日：<%= review.created_at.strftime('%Y/%m/%d') %><br>
+                  点数評価：<%= review.score %>点<br>
+                  価格：<%= review.item.price %>円
                 </td>
                 <td class="text-center">
                   <%= link_to admin_review_path(review.id) do %>
