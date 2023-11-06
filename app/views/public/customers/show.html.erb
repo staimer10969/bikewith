@@ -1,52 +1,56 @@
 <body>
   <main>
-    <div class="container mt-5">
-      <div class="mypage-title">
-        <h3>マイページ</h3>
-      </div>
-
-        <div class="row">
-
-          <div class="col-md-4 mt-5 text-center">
-            <%= image_tag @customer.get_image %>
+    <br>
+        <div class="container mt-5">
+          <div class="mypage-title">
+            <h3>マイページ</h3>
           </div>
+            <br>
+            <div class="row">
 
-          <div class="col-md-7 mt-3 ml-5">
-            <h5 class="mt-3 ml-3">プロフィール</h5>
-              <table class="table table-borderless mt-4 ml-2">
-                <tbody class="mt-1">
-                  <tr>
-                    <th class="col-lg-4">ニックネーム</th>
-                    <td>&ensp;<%= @customer.name %></td>
-                  </tr>
-
-                  <tr>
-                    <th class="col-lg-4">ライダースキル</th>
-                    <td>&ensp;<%= @customer.skill_i18n %></td>
-                  </tr>
-
-                  <tr>
-                    <th class="col-lg-4">乗車頻度</th>
-                    <td>&ensp;<%= @customer.frequency_i18n %></td>
-                  </tr>
-
-                  <tr>
-                    <th class="col-lg-4">自己紹介</th>
-                    <td>&ensp;<%= @customer.introduction %></td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <div class="btn mt-4 ml-2">
-                <% if customer_signed_in? && @customer.id == current_customer.id %>
-                  <%= link_to "プロフィール編集", customers_information_edit_path(@customer.id), class:"btn btn-success" %>&nbsp;
-                  <%= link_to "＋Myバイク投稿", new_mybike_review_path, class:"btn btn-primary" %>&nbsp;
-                <% end %>
-                  <%= link_to "Myバイク投稿履歴一覧", bike_reviews_path(customer_id: @customer.id), class:"btn btn-info" %>
+              <div class="col-md-4 mt-5 text-center">
+                <%= image_tag @customer.get_image %>
               </div>
-          </div>
+
+              <div class="col-md-7 mt-3 ml-5">
+                <h5 class="mt-3 ml-3">プロフィール</h5>
+                  <table class="table table-borderless mt-4 ml-2">
+                    <tbody class="mt-1">
+                      <tr>
+                        <th class="col-lg-4">ニックネーム</th>
+                        <td>&ensp;<%= @customer.name %></td>
+                      </tr>
+
+                      <tr>
+                        <th class="col-lg-4">ライダースキル</th>
+                        <td>&ensp;<%= @customer.skill_i18n %></td>
+                      </tr>
+
+                      <tr>
+                        <th class="col-lg-4">乗車頻度</th>
+                        <td>&ensp;<%= @customer.frequency_i18n %></td>
+                      </tr>
+
+                      <tr>
+                        <th class="col-lg-4">自己紹介</th>
+                        <td>&ensp;<%= @customer.introduction %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div class="btn mt-4 ml-2">
+                    <% if customer_signed_in? && @customer.id == current_customer.id %>
+                      <%= link_to "プロフィール編集", customers_information_edit_path(@customer.id), class:"btn btn-success" %>&nbsp;
+                      <%= link_to "＋Myバイク投稿", new_mybike_review_path, class:"btn btn-primary" %>&nbsp;
+                    <% end %>
+                      <%= link_to "Myバイク投稿履歴一覧", bike_reviews_path(customer_id: @customer.id), class:"btn btn-info" %>
+                  </div>
+              </div>
+            </div>
         </div>
-    </div>
+      <br>
+      <br>
+      <br>
   </main>
 </body>
 
