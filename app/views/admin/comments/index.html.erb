@@ -1,28 +1,42 @@
-<h1>コメント履歴一覧</h1>
+<body>
+   <main>
+     <div class="container mt-5">
+      <div class="title">
+        <h3>コメント履歴一覧</h3>
+      </div>
 
-<table class="table customer-table">
- <thead class="table-active">
-  <tr>
-    <th>投稿日時</th>
-    <th>ニックネーム</th>
-    <th>コメント</th>
-  </tr>
- </thead>
+        <div class="row">
+         <div class="col-md-11 mt-5 ml-5">
+           <table class="table comment-table">
+             <thead class="table-active">
+              <tr>
+                <th>投稿日時</th>
+                <th>ニックネーム</th>
+                <th>コメント</th>
+              </tr>
+             </thead>
 
-  <tbody>
-    <%# @customers.each do |customer| %>
-    <tr>
-      <th>
-       <%#= customer.id %>
-      </th>
-      <td>
-       <%#= link_to customer.name, admin_customer_path(customer.id) %>
-      </td>
-      <th>
-       <%#= customer.email %>
-      </th>
-    </tr>
-     <%# end %>
-     <%#= paginate @customers %>
-  </tbody>
-</table>
+             <tbody>
+               <%# @customers.each do |customer| %>
+               <tr>
+                 <th>
+                  <%#= customer.id %>
+                 </th>
+                 <td>
+                  <%#= link_to customer.name, admin_customer_path(customer.id) %>
+                 </td>
+                 <th>
+                  <%#= customer.email %>
+                 </th>
+               </tr>
+                <%# end %>
+                <%#= paginate @customers %>
+             </tbody>
+           </table>
+        </div>
+        </div>
+      </div>
+    </main>
+    <br>
+    <br>
+ </body>

@@ -1,47 +1,48 @@
 <body>
- <main>
-  <div class="container mt-5">
-   <div class="title">
-    <h2><%= @customer.name %>さんの会員情報編集</h2>
-   </div>
-
-   <div class="row">
-    <div class="col-md-11 mt-5">
-       <%= form_with(model: @customer, url:admin_customer_path, local: true, method: :patch) do |f| %>
-
-       <table class="table table-borderless">
-        <tr>
-         <th><%= f.label :"会員ID" %></th>
-         <td><%= f.label :"#{@customer.id}" %></td>
-        </tr>
-
-        <tr>
-         <th><%= f.label :"ニックネーム" %></th>
-         <td><%= f.text_field :name %></td>
-        </tr>
-
-        <tr>
-         <th><%= f.label :"メールアドレス" %></th>
-         <td><%= f.text_field :email %></td>
-        </tr>
-
-        <tr>
-         <th><%= f.label :"会員ステータス" %>
-          <td>
-           <%= f.radio_button :is_deleted, false %>
-           <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-           <%= f.radio_button :is_deleted, true %>
-           <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
-          </td>
-        </tr>
-       </table>
-
-       <div class="btn-class text-center mt-5">
-        <%= f.submit '変更を保存', class: "btn btn-success w-25" %>
+   <main>
+     <div class="container mt-5">
+       <div class="title">
+        <h2><%= @customer.name %>さんの会員情報編集</h2>
        </div>
-       <% end %>
-    </div>
-   </div>
-  </div>
- </main>
+       <br>
+       <div class="row">
+         <div class="col-md-11 offset-md-3 mt-5">
+            <%= form_with(model: @customer, url:admin_customer_path, local: true, method: :patch) do |f| %>
+
+            <table class="table table-borderless">
+             <tr>
+              <th><%= f.label :"会員ID" %></th>
+              <td><%= f.label :"#{@customer.id}" %></td>
+             </tr>
+
+             <tr>
+              <th><%= f.label :"ニックネーム" %></th>
+              <td><%= f.text_field :name %></td>
+             </tr>
+
+             <tr>
+              <th><%= f.label :"メールアドレス" %></th>
+              <td><%= f.text_field :email %></td>
+             </tr>
+
+             <tr>
+              <th><%= f.label :"会員ステータス" %>
+               <td>
+                <%= f.radio_button :is_deleted, false %>
+                <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+                <%= f.radio_button :is_deleted, true %>
+                <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+               </td>
+             </tr>
+            </table>
+         </div>
+          <div class="col-md-12 btn-class text-center mt-5">
+            <%= f.submit '変更を保存', class: "btn btn-success w-25" %>
+          </div>
+            <% end %>
+       </div>
+     </div>
+   </main>
+  <br>
+  <br>
 </body>
