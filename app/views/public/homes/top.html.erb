@@ -1,30 +1,40 @@
 <body>
-  <main>
-    <div class="container mt-5">
-      <div class="new-reviews-title">
-        <h3>新着Myバイク</h3>
+  <table>
+    <tr>
+      <td><img src="../../assets/images/top_1.jpeg" alt=""></td>
+      <td><img src="../../assets/images/top_2.jpeg" alt=""></td>
+      <td><img src="../../assets/images/top_3.jpeg" alt=""></td>
+      <td><img src="../../assets/images/top_4.jpeg" alt=""></td>
+      <td><img src="../../assets/images/top_5.jpeg" alt=""></td>
+    </tr>
+  </table>
+
+    <main>
+      <div class="container mt-5">
+        <div class="new-reviews-title">
+          <h3>新着Myバイク</h3>
+        </div>
+        <br>
+
+          <div class="row ml-3">
+            <!--<div class="col-md-12">-->
+              <% @reviews.each do |review| %>
+                <div class="new-reviews mt-3 mr-2 ml-2 col-ms-4">
+                  <%= link_to bike_review_path(review.id) do %>
+                    <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'200x150' %>
+                  <% end %>
+                  <p><%= review.item.model %></p>
+                  <p><%= review.customer.name %></p>
+                  <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
+                </div>
+              <% end %>
+            <!--</div>-->
+          </div>
+
+        <div class="reviews-more text-right mt-3">
+          <%= link_to "全ての投稿を見る>>", bike_reviews_path %>
+        </div>
       </div>
       <br>
-
-        <div class="row ml-3">
-          <!--<div class="col-md-12">-->
-            <% @reviews.each do |review| %>
-              <div class="new-reviews mt-3 mr-2 ml-2 col-ms-4">
-                <%= link_to bike_review_path(review.id) do %>
-                  <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'200x150' %>
-                <% end %>
-                <p><%= review.item.model %></p>
-                <p><%= review.customer.name %></p>
-                <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
-              </div>
-            <% end %>
-          <!--</div>-->
-        </div>
-
-      <div class="reviews-more text-right mt-3">
-        <%= link_to "全ての投稿を見る>>", bike_reviews_path %>
-      </div>
-    </div>
-    <br>
-  </main>
+    </main>
 </body>

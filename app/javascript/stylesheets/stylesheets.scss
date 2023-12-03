@@ -28,3 +28,28 @@
   height: 100%;
   width: 100%;
 }
+
+.about-image {
+	height: 100vh;
+	background-image: url("../../assets/images/about.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.sign_up-image {
+	height: 100vh;
+	background-image: url("../../assets/images/sign_up.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.sign_in-image {
+	height: 100vh;
+	background-image: url("../../assets/images/sign_in.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
