@@ -30,7 +30,7 @@ class Public::BikeReviewsController < ApplicationController
     @comment = Comment.new
     #comment = @review.comments
     gon.review = @review
-    @tag_list = @review.review_tags.pluck(:name).join(',')
+    @tag_list = @review.tags.pluck(:name).join(',')
     @review_tags = @review.review_tags
   end
 
