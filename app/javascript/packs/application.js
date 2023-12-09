@@ -14,7 +14,9 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import "../stylesheets/stylesheets";
+import "./swiper.js"
 
 Rails.start()
 //Turbolinks.start()
 ActiveStorage.start()
+
