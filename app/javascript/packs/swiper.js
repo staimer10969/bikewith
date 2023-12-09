@@ -23,6 +23,13 @@ $(function(){
      prevEl: '.swiper-button-prev', //「前へボタン」要素のクラス名
    },
 
+   responsive: [
+    {
+      breakpoint: 500, // 500px未満で・・・
+      settings: "unslick", // スライダーを無効
+    },
+   ],
+
     //オプションの設定
     // loop: true, //最後までスライドしたら最初の画像に戻る
 
@@ -38,3 +45,7 @@ $(function(){
     // }
   });
 })
+
+$(window).on("resize orientationchange", function(){
+  $(".slider").slick("resize");
+});
