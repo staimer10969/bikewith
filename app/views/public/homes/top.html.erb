@@ -1,4 +1,4 @@
-<body>
+<main>
   <table>
     <tr>
       <td><%= image_tag "top_1.jpg"%></td>
@@ -8,33 +8,30 @@
       <td><%= image_tag "top_5.jpg"%></td>
     </tr>
   </table>
-
-    <main>
-      <div class="container mt-5">
-        <div class="new-reviews-title">
-          <h3>新着Myバイク</h3>
-        </div>
-        <br>
-
-          <div class="row ml-3">
-            <!--<div class="col-md-12">-->
-              <% @reviews.each do |review| %>
-                <div class="new-reviews mt-3 mr-2 ml-2 col-ms-4">
-                  <%= link_to bike_review_path(review.id) do %>
-                    <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'200x150' %>
-                  <% end %>
-                  <p><%= review.item.model %></p>
-                  <p><%= review.customer.name %></p>
-                  <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
-                </div>
-              <% end %>
-            <!--</div>-->
-          </div>
-
-        <div class="reviews-more text-right mt-3">
-          <%= link_to "全ての投稿を見る>>", bike_reviews_path %>
-        </div>
+    <div class="container">
+      <div class="new-reviews-title">
+        <h3>新着Myバイク</h3>
       </div>
       <br>
-    </main>
-</body>
+
+        <div class="row ml-3">
+          <!--<div class="col-md-12">-->
+            <% @reviews.each do |review| %>
+              <div class="new-reviews mt-3 mr-2 ml-2 col-ms-4">
+                <%= link_to bike_review_path(review.id) do %>
+                  <%= image_tag review.item.get_image, fallback: 'no_image.jpg', size:'200x150' %>
+                <% end %>
+                <p><%= review.item.model %></p>
+                <p><%= review.customer.name %></p>
+                <p>更新日：<%= review.created_at.strftime('%Y/%m/%d') %></p>
+              </div>
+            <% end %>
+          <!--</div>-->
+        </div>
+
+      <div class="reviews-more text-right mt-3">
+        <%= link_to "全ての投稿を見る>>", bike_reviews_path %>
+      </div>
+    </div>
+  <br>
+</main>
