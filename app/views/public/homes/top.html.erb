@@ -1,13 +1,30 @@
 <main>
-  <table>
-    <tr>
-      <td><%= image_tag "top_1.jpg"%></td>
-      <td><%= image_tag "top_2.jpg"%></td>
-      <td><%= image_tag "top_3.jpg"%></td>
-      <td><%= image_tag "top_4.jpg"%></td>
-      <td><%= image_tag "top_5.jpg"%></td>
-    </tr>
-  </table>
+  <div class="swiper text-center">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <%= image_tag "top_1.jpg" %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag "top_2.jpg" %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag "top_3.jpg" %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag "top_4.jpg" %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag "top_5.jpg" %>
+        </div>
+      </div>
+      <!-- ページネーションの要素 -->
+      <div class="swiper-pagination"></div>
+      <!-- ナビゲーションボタン （前、次） -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+  </div>
+  <script src="script.js"></script>
+
     <div class="container">
       <div class="new-reviews-title">
         <h3>新着Myバイク</h3>
