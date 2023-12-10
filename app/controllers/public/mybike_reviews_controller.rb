@@ -38,7 +38,7 @@ class Public::MybikeReviewsController < ApplicationController
 
   def edit
     #@item = @review.item
-    @tag_list = @review.review_tags.pluck(:name).join(',')
+    @tag_list = @review.tags.pluck(:name).join(',')
   end
 
   def update
