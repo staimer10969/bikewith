@@ -5,10 +5,10 @@ $(function(){
    slidesPerView: '6', //何枚表示するか
    speed: 2700, // スライドアニメーションのスピード（ミリ秒）
    centeredSlides : true,
-	 autoplay: { //自動再生する
-		delay: 2700, //次のスライドに切り替わるまでの時間
-      disableOnInteraction: false, //ユーザーが操作したら止めるか
-      waitForTransition: false, // アニメーションの間にスライドを止めるか
+ 	 autoplay: { //自動再生する
+ 		delay: 2700, //次のスライドに切り替わるまでの時間
+   disableOnInteraction: false, //ユーザーが操作したら止めるか
+   waitForTransition: false, // アニメーションの間にスライドを止めるか
 	},
    //ページネーション表示の設定
    pagination: {
