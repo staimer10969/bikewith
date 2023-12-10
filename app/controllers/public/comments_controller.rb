@@ -15,12 +15,16 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:bike_review_id])
-    if review.comments.find(params[:id]).destroy
-      redirect_to bike_review_path(review.id)
-    else
-      redirect_to mybike_review_path(review.id)
-    end
+    @review = Review.find(params[:bike_review_id])
+    @comment = current_customer.comments.find_by(review_id: @review.id)
+    @comment.destroy
+    redirect_to bike_review_path(@review.id)
+    # review = Review.find(params[:bike_review_id])
+    # if bike_review.comment.find(params[:id]).destroy
+    #   redirect_to bike_review_path(review.id)
+    # else
+    #   redirect_to mybike_review_path(review.id)
+    # end
   end
 
   private
