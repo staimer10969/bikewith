@@ -20,8 +20,10 @@
       </td>
       <td>
         <%= review.item.model %><br>
-        <%= link_to customers_information_path(review.customer.id) do %>
-          <%= review.customer.name %><br>
+        <% if customer_signed_in? %>
+          <%= link_to customers_information_path(review.customer.id) do %>
+            <%= review.customer.name %><br>
+          <% end %>
         <% end %>
         更新日：<%= review.created_at.strftime('%Y/%m/%d') %><br>
         点数評価：<%= review.score %>点<br>
